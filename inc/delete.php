@@ -1,3 +1,5 @@
+<?php
+/*
 MIT License
 
 Copyright (c) 2026 Armin Deck
@@ -19,3 +21,15 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+*/
+
+if (isset($_GET["action"]) && $_GET["action"] == "delete" && !empty($list) && isset($_GET["id"]) && isset($list[$_GET["id"]])){
+    $id = secureString($_GET["id"] ?? "");
+    $search = in_array($id, $list);
+
+    unset($list[$id]);
+
+    $confirm = write(pathFiles("list"), $list);
+    message($confirm ? "success" : "error", language($confirm ? "deleted" : "fail"));
+    redirect("./");
+}

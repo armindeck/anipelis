@@ -1,3 +1,5 @@
+<?php
+/*
 MIT License
 
 Copyright (c) 2026 Armin Deck
@@ -19,3 +21,27 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+*/
+
+if (isset($_POST["add"]) || !empty($_POST["add"])){
+    $title = secureString($_POST["title"] ?? "");
+    $episode = secureString($_POST["episode"] ?? "");
+    $episodes = secureString($_POST["episodes"] ?? "");
+    $season = secureString($_POST["season"] ?? "");
+    $state = secureString($_POST["state"] ?? "");
+    $type = secureString($_POST["type"] ?? "");
+
+    if (empty($title) || empty($episode) || empty($state) || empty($type)){
+        message("error", language("fill_required"));
+        $_SESSION["tmp_form"] = array_post($title, $episode, $episodes, $season, $state, $type);
+        redirect("./");
+    }
+
+    $id = secureStringFile($_POST["title"] ?? "");
+    $search = isset($list[$id]);
+    $list[$id] = array_post($title, $episode, $episodes, $season, $state, $type);
+    $confirm = write(pathFiles("list"), $list);
+
+    message($confirm ? "success" : "error", $confirm ? language($search ? "updated" : "added") : language("fail"));
+    redirect("./");
+}

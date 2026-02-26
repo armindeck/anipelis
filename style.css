@@ -1,0 +1,228 @@
+:root {
+    --font-primary: Arial, sans-serif;
+    --text-co: #FFF;
+    --text-co-secondary: #111;
+    --text-link-co: orangered;
+    --text-link-hover-co: orange;
+
+    --back-primary: rgb(80, 0, 111);
+    --back-secondary: #fff;
+
+    --header-bg: #ebebeb;
+    --header-co: #000;
+    --header-nav-bg: #fff;
+    --header-button-co: #000;
+    --header-button-bg: transparent;
+    --header-button-hover-co: #fff;
+    --header-button-hover-bg: purple;
+    
+    --footer-bg: #ebebeb;
+    --footer-co: #000;
+
+    --option-co: #000;
+    --option-title-co: #000;
+    --option-bg: #fff;
+    --option-title-bg: #ebebeb;
+
+    --success-co: #fff;
+    --success-bg: green;
+    --error-co: #fff;
+    --error-bg: red;
+    --warning-co: #000;
+    --warning-bg: yellow;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--back-primary);
+    color: var(--text-co);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-link-co);
+    transition: .1s ease;
+}
+
+a:hover {
+    color: var(--text-link-hover-co);
+}
+
+hr {
+    border: 0;
+    background-color: rgb(0,0,0,.1);
+    height: 1px;
+    margin: 8px 0;
+}
+
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 720px;
+    min-height: 70vh;
+    border-radius: 8px;
+    background-color: var(--back-secondary);
+    overflow: hidden;
+    flex: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--header-co);
+    background-color: var(--header-bg);
+    padding: 8px;
+    border-bottom: 1px solid rgb(0,0,0,.1);
+}
+
+.header .title {
+    color: darkorchid;
+}
+
+.header nav {
+    display: flex;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--header-nav-bg);
+    box-shadow: 0 0 0px 1px rgb(0,0,0,.1);
+}
+
+.header a {
+    padding: 6px 8px;
+    color: var(--header-button-co);
+    background-color: var(--header-button-bg);
+}
+
+.header a:hover {
+    color: var(--header-button-hover-co);
+    background-color: var(--header-button-hover-bg);
+}
+
+.header select {
+    padding: 6px 8px;
+    color: var(--header-button-co);
+    background-color: var(--header-button-bg);
+    border: none;
+    cursor: pointer;
+}
+
+.header select:hover {
+    color: var(--header-button-hover-co);
+    background-color: var(--header-button-hover-bg);
+}
+
+.footer {
+    text-align: center;
+    font-size: small;
+    color: var(--footer-co);
+    background-color: var(--footer-bg);
+    padding: 8px;
+    border-top: 1px solid rgb(0,0,0,.1);
+}
+
+.main {
+    flex: 1;
+    color: var(--text-co-secondary);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    padding: 8px 12px;
+}
+
+input, button {
+    padding: 6px 8px;
+}
+
+input.mini {
+    max-width: 100px;
+}
+
+option {
+    color: var(--option-co);
+    background-color: var(--option-bg);
+}
+
+option.option_title {
+    color: var(--option-title-co);
+    background-color: var(--option-title-bg);
+}
+
+table {
+    width: 100%;
+    border: 1px solid rgb(0,0,0,.1);
+}
+
+thead {
+    font-weight: bold;
+    background-color: rgb(0,0,0,.1);
+}
+
+td {
+    padding: 4px;
+}
+
+.scroll-auto {
+    overflow-x: auto;
+}
+
+.message {
+    display: block;
+    padding: 8px 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.message.success {
+    color: var(--success-co);
+    background-color: var(--success-bg);
+}
+
+.message.error {
+    color: var(--error-co);
+    background-color: var(--error-bg);
+}
+
+.message.warning {
+    color: var(--warning-co);
+    background-color: var(--warning-bg);
+}
+
+.hidden_message:checked ~ .message {
+    display: none;
+}
+
+.flex { display: flex; }
+
+.flex-evenly { justify-content: space-evenly; }
+.flex-between { justify-content: space-between; }
+.flex-around { justify-content: space-around; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-4 { gap: 4px; }
+
+.p-8 { padding: 8px; }
+
+@media (max-width: 920px) {
+    .app {
+        max-width: 100%;
+        min-height: 100vh;
+        border-radius: 0px;
+    }
+}
