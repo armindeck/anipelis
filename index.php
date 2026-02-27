@@ -26,6 +26,8 @@ SOFTWARE.
 session_start();
 require_once __DIR__ . "/inc/script.php"; // Scripts
 changeLanguage($_GET["language"] ?? ""); // Change Language
+changeTheme($_GET["theme"] ?? ""); // Change Theme
+counter("index"); // Counter
 
 // List
 $list = read(pathFiles("list"));
@@ -42,9 +44,10 @@ require_once filePath(pathFiles("delete"));
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= config("app_name") ?? core("name") ?></title>
+    <meta name="description" content="Listado de animes, peliculas, series">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-theme="<?= $_SESSION["theme"] ?? config("theme") ?? "light" ?>">
     <div class="app">
         <header class="header">
             <div>
@@ -54,7 +57,12 @@ require_once filePath(pathFiles("delete"));
                 <a href="./"><?= language("home") ?></a>
                 <select name="language" id="language" onchange="window.location.href='?language='+this.value">
                     <?php foreach (core("languages") as $key): ?>
-                        <option value="<?= $key ?>" <?= config("language") == $key ? "selected" : "" ?>><?= strtoupper($key) ?></option>
+                        <option value="<?= $key ?>" <?= ($_SESSION["language"] ?? config("language")) == $key ? "selected" : "" ?>><?= strtoupper($key) ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <select name="theme" id="theme" onchange="window.location.href='?theme='+this.value">
+                    <?php foreach (core("themes") as $key): ?>
+                        <option value="<?= $key ?>" <?= ($_SESSION["theme"] ?? config("theme")) == $key ? "selected" : "" ?>><?= strtoupper(substr($key, 0, 1)) . substr($key, 1, strlen($key)) ?></option>
                     <?php endforeach; ?>
                 </select>
             </nav>
@@ -68,7 +76,7 @@ require_once filePath(pathFiles("delete"));
             <?php endif; unset($_SESSION["message"]); ?>
             <form method="post" class="form" id="formProcess">
                 <h3><?= language(getListValueGetTmp($list, "id", "title") ? "edit" : "add") ?></h3>
-                <input type="text" name="title" id="title" placeholder="<?= language("title") ?>" value="<?= getListValueGetTmp($list, "id", "title") ?>">
+                <input type="text" name="title" id="title" placeholder="<?= language("title") ?>" value="<?= getListValueGetTmp($list, "id", "title") ?>" required>
                 <hgroup class="flex flex-wrap flex-between gap-4">
                     <input type="number" name="episode" id="episode" class="mini" placeholder="<?= language("episode") ?>" value="<?= getListValueGetTmp($list, "id", "episode") ?>" min="0" required>
                     <input type="number" name="episodes" id="episodes" class="mini" placeholder="<?= language("episodes") ?>" value="<?= getListValueGetTmp($list, "id", "episodes") ?>" min="0">
@@ -134,7 +142,7 @@ require_once filePath(pathFiles("delete"));
             <?php endif; ?>
         </main>
         <footer class="footer">
-            <small style="float: left; opacity: 0.8;" title="<?= language("license") ?>">MIT</small>
+            <small style="float: left; opacity: 0.8;" title="<?= language("license") . " - " . language("counter") ?>">MIT - <?= read(pathFiles("counter"))["counter"] ?? 1 ?></small>
             &copy; 2026 <a href="https://github.com/armindeck" target="_blank">Armin Deck</a>.
             <small style="float: right; opacity: 0.8;" title="<?= language(core("state")) . " - " . core("updated") ?>">v<?= core("version") ?></small>
         </footer>
