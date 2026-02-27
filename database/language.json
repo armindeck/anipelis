@@ -22,6 +22,7 @@
     "beta": {"es": "Beta", "en": "Beta"},
     "development": {"es": "Desarrollo", "en": "development"},
     "license": {"es": "Licencia", "en": "License"},
+    "counter": {"es": "Contador", "en": "Counter"},
     "no_access": {"es": "No tiene acceso a esta página.", "en": "You don't have access to this page."},
     "fill_required": {"es": "Por favor llene los datos obligatorios.", "en": "Please fill the required fields."},
     "added": {"es": "Agregado exitosamente.", "en": "Added successfully."},
