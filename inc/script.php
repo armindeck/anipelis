@@ -36,6 +36,7 @@ function pathFiles(string $string): string {
         "config" => "database/config.json",
         "list" => "database/list.json",
         "language" => "database/language.json",
+        "counter" => "database/counter.json",
     ];
 
     return $routes[$string] ?? $string;
@@ -123,7 +124,7 @@ function language(string $string): string {
     if ($lang === null) {
         $lang = read(pathFiles("language"));
     }
-    return $lang[$string][config("language") ?? "en"] ?? $string;
+    return $lang[$string][$_SESSION["language"] ?? (config("language") ?? "en")] ?? $string;
 }
 
 function read(string $path): array {
@@ -147,7 +148,7 @@ function core(string $key): array|string {
     return read(pathFiles("core"))[$key] ?? [];
 }
 
-function config(string $key): string {
+function config(string $key): array|string {
     return read(pathFiles("config"))[$key] ?? [];
 }
 
@@ -161,10 +162,22 @@ function changeLanguage(string $language): void {
             redirect("./");
         }
 
-        $path_config = pathFiles("config");
-        $config = read($path_config);
-        $config["language"] = $language;
-        write($path_config, $config);
+        $_SESSION["language"] = $language;
         redirect("./");
     }
+}
+
+function changeTheme(string $theme): void {
+    if (!empty($theme)){
+        $_SESSION["theme"] = secureString($theme);
+        redirect("./");
+    }
+}
+
+function counter(string $slug): void {
+    $counterPath = pathFiles("counter");
+    $read = read($counterPath);
+    $read[$slug] = isset($read[$slug]) ? $read[$slug] + 1 : 1;
+    $read["counter"] = isset($read["counter"]) ? $read["counter"] + 1 : 1;
+    write($counterPath, $read);
 }
