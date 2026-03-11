@@ -1,4 +1,13 @@
 {
+    "name": {"es": "Nombre", "en": "Name"},
+    "email": {"es": "Email", "en": "Email"},
+    "account": {"es": "Cuenta", "en": "Account"},
+    "register": {"es": "Registrarse", "en": "Register"},
+    "login": {"es": "Iniciar sesión", "en": "Login"},
+    "profile": {"es": "Perfil", "en": "Profile"},
+    "user": {"es": "Usuario", "en": "User"},
+    "password": {"es": "Contraseña", "en": "Password"},
+    "confirm_password": {"es": "Confirmar contraseña", "en": "Confirm password"},
     "add": {"es": "Agregar", "en": "Add"},
     "edit": {"es": "Editar", "en": "Edit"},
     "title": {"es": "Título", "en": "Title"},
