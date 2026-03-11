@@ -26,6 +26,15 @@ SOFTWARE.
 if (isset($_POST["login"]) || !empty($_POST["login"])){
     $user = secureString($_POST["user"] ?? "");
     $pass = $_POST["password"] ?? "";
+    $h_captcha_response = $_POST["h-captcha-response"];
+    
+    require_once __DIR__ . "/../captcha.php";
+    $captcha = new Captcha();
+    if (!$captcha->checkCaptcha($h_captcha_response)) {
+        message("error", language("Captcha inválido"));
+        $_SESSION["tmp_form"] = ["user" => $user];
+        redirect("./login");
+    }
 
     if (empty($user) || empty($pass)){
         message("error", language("fill_required"));

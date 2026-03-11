@@ -29,6 +29,15 @@ if (isset($_POST["register"]) || !empty($_POST["register"])){
     $email = secureString($_POST["email"] ?? "");
     $pass = $_POST["password"] ?? "";
     $pass_confirm = $_POST["confirm_password"] ?? "";
+    $h_captcha_response = $_POST["h-captcha-response"];
+
+    require_once __DIR__ . "/../captcha.php";
+    $captcha = new Captcha();
+    if (!$captcha->checkCaptcha($h_captcha_response)) {
+        message("error", language("Captcha inválido"));
+        $_SESSION["tmp_form"] = ["user" => $user];
+        redirect("./register");
+    }
 
     if (empty($user) || empty($name) || empty($email) || empty($pass) || empty($pass_confirm)){
         message("error", language("fill_required"));
