@@ -9,5 +9,9 @@ Aplicación web PHP ligera para administración y visualización de una colecci�
 - Eliminar anime, pelicula, ova, etc
 - Cambio de idioma (español, ingles)
 
+## ⚙ Configurar hCaptcha
+- Agregar la clave secreta en [captcha.php](./inc/captcha.php)
+- Aregar la clave publica en [captcha-view.php](./inc/views/components/captcha-view.php)
+
 ## 🌐 Información adicional  
 🔗 Página oficial: [dbproject.rf.gd](https://dbproject.rf.gd)  
