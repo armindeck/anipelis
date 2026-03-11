@@ -33,6 +33,7 @@ SOFTWARE.
     <title><?= config("app_name") ?? core("name") ?></title>
     <meta name="description" content="Listado de animes, peliculas, series">
     <link rel="stylesheet" href="<?= route("style.css") ?>">
+	<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body data-theme="<?= $_SESSION["theme"] ?? (!empty(config("theme")) ? config("theme") : "light") ?>">
     <div class="app">
