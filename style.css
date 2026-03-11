@@ -115,15 +115,27 @@ hr {
     background-color: var(--header-button-hover-bg);
 }
 
-.header select {
-    padding: 6px 8px;
+.header label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 6px;
     color: var(--header-button-co);
     background-color: var(--header-button-bg);
     border: none;
     cursor: pointer;
 }
 
-.header select:hover {
+.header select {
+    border: none;
+    cursor: pointer;
+    color: var(--header-button-co);
+    background-color: transparent;
+    padding: 6px 8px 6px 2px;
+}
+
+.header label:hover,
+.header label:hover select {
     color: var(--header-button-hover-co);
     background-color: var(--header-button-hover-bg);
 }
@@ -230,5 +242,12 @@ td {
         min-height: 100vh;
         border-radius: 0px;
         box-shadow: 0px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        gap: 8px;
+        flex-direction: column;
     }
 }
