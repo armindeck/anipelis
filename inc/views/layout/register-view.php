@@ -34,6 +34,7 @@ view("components/header", ["auth" => $model->auth()]);
             <input type="text" name="email" id="email" placeholder="<?= language("email") ?>" minlength="4" maxlength="150" required>
             <input type="password" name="password" id="password" placeholder="<?= language("password") ?>" minlength="8" maxlength="150" required>
             <input type="password" name="confirm_password" id="confirm_password" placeholder="<?= language("confirm_password") ?>" minlength="8" maxlength="150" required>
+            <?php view("components/captcha") ?>
             <button type="submit" name="register" id="register"><?= language("register") ?></button>
         </form>
     </main>

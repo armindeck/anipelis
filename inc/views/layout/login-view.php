@@ -31,6 +31,7 @@ view("components/header", ["auth" => $model->auth()]);
             <h3><?= language("login") ?></h3>
             <input type="text" name="user" id="user" placeholder="<?= language("user") ?>" minlength="4" maxlength="25" required>
             <input type="password" name="password" id="password" placeholder="<?= language("password") ?>" minlength="8" maxlength="150" required>
+            <?php view("components/captcha") ?>
             <button type="submit" name="login" id="login"><?= language("login") ?></button>
         </form>
     </main>
