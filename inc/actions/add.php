@@ -30,18 +30,25 @@ if (isset($_POST["add"]) || !empty($_POST["add"])){
     $season = secureString($_POST["season"] ?? "");
     $state = secureString($_POST["state"] ?? "");
     $type = secureString($_POST["type"] ?? "");
+    $to_user = isset($_POST["to_user"]) && !empty($_POST["to_user"]) && $model->auth();
 
     if (empty($title) || empty($episode) || empty($state) || empty($type)){
         message("error", language("fill_required"));
         $_SESSION["tmp_form"] = array_post($title, $episode, $episodes, $season, $state, $type);
-        redirect("./");
+        redirect(route($to_user ? "p/" . $_SESSION["user"] : ""));
     }
 
     $id = secureStringFile($_POST["title"] ?? "");
-    $search = isset($list[$id]);
-    $list[$id] = array_post($title, $episode, $episodes, $season, $state, $type);
+    $search = $to_user ? isset($list["user"][$_SESSION["user"]][$id]) : isset($list["public"][$id]);
+    
+    if($to_user){
+        $list["user"][$_SESSION["user"]][$id] = array_post($title, $episode, $episodes, $season, $state, $type);
+    } else {
+        $list["public"][$id] = array_post($title, $episode, $episodes, $season, $state, $type);
+    }
+
     $confirm = write(pathFiles("list"), $list);
 
     message($confirm ? "success" : "error", $confirm ? language($search ? "updated" : "added") : language("fail"));
-    redirect("./");
+    redirect(route($to_user ? "p/" . $_SESSION["user"] : ""));
 }
