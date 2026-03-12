@@ -241,6 +241,8 @@ function view(string $view, ?array $data = [], ?bool $extract = true): void {
     if (!file_exists($file)){
         die("El archivo $view no existe!");
     }
+    
+    unset($view);
 
     if(!empty($data) && $extract){
         extract($data, EXTR_SKIP);
