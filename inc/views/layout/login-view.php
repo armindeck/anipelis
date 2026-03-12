@@ -28,7 +28,7 @@ view("components/header", ["auth" => $model->auth()]);
     <main class="main">
         <?php view("components/message"); ?>
         <form method="post" class="form" id="formProcess">
-            <h3><?= language("login") ?></h3>
+            <h3><?= language("login") ?> - <a href="<?= route("register") ?>"><?= language("register") ?></a></h3>
             <input type="text" name="user" id="user" placeholder="<?= language("user") ?>" minlength="4" maxlength="25" required>
             <input type="password" name="password" id="password" placeholder="<?= language("password") ?>" minlength="8" maxlength="150" required>
             <?php view("components/captcha") ?>
