@@ -1,3 +1,6 @@
 database/counter.json
 database/users.json
 database/list.json
+inc/captcha.php
+inc/views/components/captcha-view.php
+.gitignore

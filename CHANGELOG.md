@@ -15,3 +15,6 @@
 - Ahora se puede ver el perfil `Dev`.
 - Ahora se muestra una pantalla de error `Dev`.
 - Ahora para poder crearse una cuenta o iniciar sesión hay que verificar el captcha.
+- Ahora el usuario puede tener su propio listado.
+- Esta disponible el apartado comunidad.
+- Se puede ver los listados de los demas usuarios.
