@@ -32,7 +32,9 @@ SOFTWARE.
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= config("app_name") ?? core("name") ?></title>
     <meta name="description" content="Listado de animes, peliculas, series">
-    <link rel="stylesheet" href="<?= route("style.css") ?>">
+    <style type="text/css">
+        <?= file_exists(RAIZ . "style.css") ? file_get_contents(RAIZ . "style.css") : "" ?>
+    </style>
 	<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body data-theme="<?= $_SESSION["theme"] ?? (!empty(config("theme")) ? config("theme") : "light") ?>">
@@ -43,10 +45,8 @@ SOFTWARE.
             </div>
             <nav>
                 <a href="<?= route() ?>">🏠 <?= language("home") ?></a>
-                <a href="<?= route(!$auth ? "login" : "p/" . ($_SESSION["user"] ?? "")) ?>">👦 <?= language(!$auth ? "login" : "profile") ?></a>
-                <?php if(!$auth): ?>
-                    <a href="<?= route("register") ?>">👪 <?= language("register") ?></a>
-                <?php endif ?>
+                <a href="<?= route(!$auth ? "login" : "p/" . ($_SESSION["user"] ?? "")) ?>">👦 <?= language(!$auth ? "account" : "profile") ?></a>
+                <a href="<?= route("community") ?>">👨‍👩‍👧‍👧 <?= language("community") ?></a>
                 <label>📖
                     <select name="language" id="language" onchange="window.location.href='?language='+this.value">
                         <?php foreach (core("languages") as $key): ?>
@@ -61,7 +61,7 @@ SOFTWARE.
                         <?php endforeach; ?>
                     </select>
                 </label>
-                <?php if($auth): ?>
+                <?php if($auth && isset($view) && $view == "profile"): ?>
                     <a href="<?= route("logout") ?>">🚪 <?= language("logout") ?></a>
                 <?php endif ?>
             </nav>
