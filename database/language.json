@@ -38,5 +38,11 @@
     "updated": {"es": "Actualizado exitosamente.", "en": "Updated successfully."},
     "deleted": {"es": "Elimininado exitosamente.", "en": "Delete successfully."},
     "fail": {"es": "Ocurrió un error al guardar los datos.", "en": "An error occurred while saving the data."},
-    "confirm_delete": {"es": "¿Está seguro de que desea eliminar?", "en": "Are you sure you want to delete?"}
+    "confirm_delete": {"es": "¿Está seguro de que desea eliminar?", "en": "Are you sure you want to delete?"},
+    "profile_not_found": {"es": "Perfil no encontrado", "en": "Profile not found"},
+    "profile_not_found_searched": {"es": "No se encontró el perfil buscado", "en": "The searched profile was not found"},
+    "page_not_found": {"es": "No se encuentra la página solicitada", "en": "The requested page is not found"},
+    "logout": {"es": "Cerrar sesión", "en": "Logout"},
+    "error": {"es": "Error", "en": "Error"},
+    "community": {"es": "Comunidad", "en": "Community"}
 }
