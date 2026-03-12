@@ -27,7 +27,9 @@ view("components/header", ["auth" => $auth]);
 ?>
     <main class="main">
         <?php view("components/message"); ?>
-        <h3><?= language("error") ?></h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, ab. Enim quibusdam temporibus fugit autem incidunt! Eveniet unde, porro voluptatem officiis laudantium, alias tempore enim veniam ea itaque eum accusantium.</p>
+        <div class="content">
+            <h3><?= language($title ?? "error") ?></h3>
+            <p><?= language($text ?? "page_not_found") ?></p>
+        </div>
     </main>
 <?php view("components/footer") ?>
