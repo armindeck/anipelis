@@ -156,4 +156,8 @@ class model {
         unset($_SESSION["user"]);
         unset($_SESSION["token"]);
     }
+
+    public function allUser(): array {
+        return read(pathFiles("users"));
+    }
 }
