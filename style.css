@@ -85,6 +85,8 @@ hr {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
     color: var(--header-co);
     background-color: var(--header-bg);
     padding: 8px;
@@ -192,6 +194,10 @@ thead {
 
 td {
     padding: 4px;
+}
+
+.content {
+    padding: 8px 12px;
 }
 
 .scroll-auto {
