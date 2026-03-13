@@ -39,7 +39,7 @@ if (isset($_POST["add"]) || !empty($_POST["add"])){
         redirect(route($to_user ? "p/" . $_SESSION["user"] : ""));
     }
 
-    if (filter_var($_POST["url"] ?? "", FILTER_VALIDATE_URL) === false) {
+    if (!empty($url) && filter_var($_POST["url"] ?? "", FILTER_VALIDATE_URL) === false) {
         message("error", language("error"));
         redirect(route($to_user ? "p/" . $_SESSION["user"] : ""));
     }
