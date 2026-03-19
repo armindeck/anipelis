@@ -32,9 +32,14 @@ view("components/header", ["auth" => $model->auth(), "view" => $view]);
         </div>
         <hr>
         <?php if($is_user_user){
+            $list_state = ["watch" => [], "waiting" => [], "finalized" => []];
+            foreach ($list_only as $key => $value) {
+                $list_state[$value["state"]][$key] = $value;
+            }
+            $list_convert = array_merge(array_reverse($list_state["watch"]), array_reverse($list_state["waiting"]), array_reverse($list_state["finalized"]));
             view("components/form-add", ["list_only" => $list_only, "user" => $user ?? false, "is_user_user" => $is_user_user ?? false]);
             echo "<hr>";
         }?>
-        <?php view("components/list", ["list_only" => $list_only, "user" => $user ?? false, "is_user_user" => $is_user_user ?? false]); ?>
+        <?php view("components/list", ["list_only" => array_reverse($list_convert), "user" => $user ?? false, "is_user_user" => $is_user_user ?? false]); ?>
     </main>
 <?php view("components/footer"); ?>
