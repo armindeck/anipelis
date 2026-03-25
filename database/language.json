@@ -1,6 +1,6 @@
 {
     "languages": {"es": "Idiomas", "en": "Languages"},
-    "themes": {"es": "Temas", "en": "themes"},
+    "themes": {"es": "Temas", "en": "Themes"},
     "config": {"es": "Configuración", "en": "Config"},
     "header.config": {"es": "Config", "en": "Config"},
     "name": {"es": "Nombre", "en": "Name"},
