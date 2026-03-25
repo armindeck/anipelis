@@ -47,18 +47,19 @@ SOFTWARE.
                 <a href="<?= route() ?>">🏠 <?= language("home") ?></a>
                 <a href="<?= route(!$auth ? "login" : "p/" . ($_SESSION["user"] ?? "")) ?>">👦 <?= language(!$auth ? "account" : "profile") ?></a>
                 <a href="<?= route("community") ?>">👨‍👩‍👧‍👧 <?= language("community") ?></a>
-                <label>📖
-                    <select name="language" id="language" onchange="window.location.href='?language='+this.value">
-                        <?php foreach (core("languages") as $key): ?>
-                            <option value="<?= $key ?>" <?= ($_SESSION["language"] ?? config("language")) == $key ? "selected" : "" ?>><?= strtoupper($key) ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </label>
                 <label>🌓
-                    <select name="theme" id="theme" onchange="window.location.href='?theme='+this.value">
-                        <?php foreach (core("themes") as $key): ?>
-                            <option value="<?= $key ?>" <?= ($_SESSION["theme"] ?? config("theme")) == $key ? "selected" : "" ?>><?= strtoupper(substr($key, 0, 1)) . substr($key, 1, strlen($key)) ?></option>
+                    <select name="config" id="config" onchange="window.location.href='?config='+this.value">
+                        <option value="" selected><?= language("header.config") ?></option>
+                        <optgroup label="<?= language("languages") ?>">
+                            <?php foreach (core("languages") as $key): ?>
+                            <option value="lang.<?= $key ?>"><?= strtoupper($key) ?></option>
                         <?php endforeach; ?>
+                        </optgroup>
+                        <optgroup label="<?= language("themes") ?>">
+                        <?php foreach (core("themes") as $key): ?>
+                            <option value="theme.<?= $key ?>"><?= strtoupper(substr($key, 0, 1)) . substr($key, 1, strlen($key)) ?></option>
+                        <?php endforeach; ?>
+                        </optgroup>
                     </select>
                 </label>
                 <?php if($auth && isset($view) && $view == "profile"): ?>
