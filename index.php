@@ -32,8 +32,8 @@ $view = $slug;
 $view_explode = explode("/", $view);
 define("RAIZ", __DIR__ . "/");
 
-changeLanguage($_GET["language"] ?? ""); // Change Language
-changeTheme($_GET["theme"] ?? ""); // Change Theme
+changeLanguage($_GET["config"] ?? ""); // Change Language
+changeTheme($_GET["config"] ?? ""); // Change Theme
 $model = new model;
 //$model->newUser("admin", "Admin", "admin@example.com", "1234567890");
 //$model->login("admin", "1234567890");
