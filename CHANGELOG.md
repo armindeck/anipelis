@@ -20,3 +20,5 @@
 - Se puede ver los listados de los demas usuarios.
 - Ahora se pueden agregar enlaces de referencias. (No me hago responsable por los enlaces externos)
 - Ahora el listado en el perfil estara ordenado por (Viendo, Espera, Finalizado)
+- Ahora las configuraciones estaran en un solo menu desplegable
+- El proyecto se esta ampliando para una serie de herramientas que serviran para otras cosas
