@@ -157,8 +157,8 @@ function config(string $key): array|string {
 }
 
 function changeLanguage(string $language): void {
-    if (!empty($language)){
-        $language = secureString($language);
+    if (!empty($language) && strlen($language) > 5 && substr($language, 0, 5) == "lang."){
+        $language = secureString(substr($language, 5, strlen($language)));
         $in_list = in_array($language, core("languages"));
         
         if (!$in_list){
@@ -172,8 +172,8 @@ function changeLanguage(string $language): void {
 }
 
 function changeTheme(string $theme): void {
-    if (!empty($theme)){
-        $_SESSION["theme"] = secureString($theme);
+    if (!empty($theme) && strlen($theme) > 6 && substr($theme, 0, 6) == "theme."){
+        $_SESSION["theme"] = secureString(substr($theme, 6, strlen($theme)));
         redirect(route());
     }
 }
