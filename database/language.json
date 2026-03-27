@@ -1,4 +1,6 @@
 {
+    "star": {"es": "Estrella", "en": "Star"},
+    "stars": {"es": "Estrellas", "en": "Stars"},
     "languages": {"es": "Idiomas", "en": "Languages"},
     "themes": {"es": "Temas", "en": "Themes"},
     "config": {"es": "Configuración", "en": "Config"},
