@@ -25,7 +25,7 @@ SOFTWARE.
 ?>
 
 <form method="post" class="form" id="formProcess">
-    <h3><?= language(getListValueGetTmp($list_only, "id", "title") ? "edit" : "add") ?></h3>
+    <h3><?= !empty($user) ? "AniPelis - " : "" ?> <?= language(getListValueGetTmp($list_only, "id", "title") ? "edit" : "add") ?> <?= empty($user) ? "(" . language("public") . ")" : "" ?></h3>
     <input type="text" name="title" id="title" placeholder="<?= language("title") ?>" value="<?= getListValueGetTmp($list_only, "id", "title") ?>" required>
     <input type="url" name="url" id="url" placeholder="<?= language("url") . " (". language("optional") .")" ?>" value="<?= getListValueGetTmp($list_only, "id", "url") ?>">
     <hgroup class="flex flex-wrap flex-between gap-4">
@@ -70,5 +70,5 @@ SOFTWARE.
     <?php if($user ?? false): ?>
         <input type="checkbox" name="to_user" id="to_user" checked required hidden>
     <?php endif; ?>
-    <button type="submit" name="add" id="add"><?= language(getListValueGetTmp($list_only, "id", "title") ? "Edit" : "Add") ?></button>
+    <button type="submit" name="add" id="add"><?= language(getListValueGetTmp($list_only, "id", "title") ? "edit" : "add") ?></button>
 </form>
