@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 ?>
-<!-- anipelis core v<?= core("version") ?> (<?= core("state") ?>) (Copyright © 2026 Armin Deck – Licencia de Uso No Transferible) – https://github.com/armindeck/anipelis -->
+<!-- switch core v<?= core("version") ?> (<?= core("state") ?>) (Copyright © 2026 Armin Deck – Licencia de Uso No Transferible) – https://github.com/armindeck/switch -->
 <!DOCTYPE html>
 <html lang="<?= config("language") ?? "en" ?>">
 <head>
