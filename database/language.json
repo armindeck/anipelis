@@ -1,4 +1,9 @@
 {
+    "public": {"es": "Publico", "en": "Public"},
+    "private": {"es": "Privado", "en": "Private"},
+    "date": {"es": "Fecha", "en": "Date"},
+    "dates-of-birth": {"es": "Fechas de nacimiento", "en": "Dates of birth"},
+    "birthday": {"es": "Cumpleaños", "en": "Birthday"},
     "star": {"es": "Estrella", "en": "Star"},
     "stars": {"es": "Estrellas", "en": "Stars"},
     "languages": {"es": "Idiomas", "en": "Languages"},
