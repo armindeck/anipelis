@@ -60,7 +60,22 @@ switch ($view) {
         $data = [
             "model" => $model,
             "list" => $list,
-            "list_only" => $list[$_SESSION["user"]] ?? [],
+            "list_only" => array_reverse($list[$_SESSION["user"]] ?? []),
+            "user" => $_SESSION["user"],
+            "view" => $view
+        ];
+        break;
+
+    case "goals":
+        if(!$model->auth()){ redirect(route("login")); }
+        
+        $list = read(pathFiles("goals"));
+        $actions->addGoals($list);
+        $actions->deleteGoals($list);
+        $data = [
+            "model" => $model,
+            "list" => $list,
+            "list_only" => array_reverse($list[$_SESSION["user"]] ?? []),
             "user" => $_SESSION["user"],
             "view" => $view
         ];
