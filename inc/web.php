@@ -45,6 +45,13 @@ switch ($view) {
             "is_user_user" => isset($user) && $model->auth() && $_SESSION["user"] == $user,
             "view" => $view
         ];
+
+        $list_state = ["watch" => [], "waiting" => [], "finalized" => []];
+        foreach ($data["list_only"] as $key => $value) {
+            $list_state[$value["state"]][$key] = $value;
+        }
+        $data["list_order_by_state"] = array_merge(array_reverse($list_state["watch"]), array_reverse($list_state["waiting"]), array_reverse($list_state["finalized"]));
+        
         if($view == "profile" && !isset($model->allUser()[$user])){
             $view = "error";
             $data = ["auth" => $model->auth(), "title" => "profile_not_found", "text" => "profile_not_found_searched"];
@@ -75,10 +82,16 @@ switch ($view) {
         $data = [
             "model" => $model,
             "list" => $list,
-            "list_only" => array_reverse($list[$_SESSION["user"]] ?? []),
+            "list_only" => $list[$_SESSION["user"]] ?? [],
             "user" => $_SESSION["user"],
             "view" => $view
         ];
+
+        $list_state = ["in_progress" => [], "on_pause" => [], "completed" => []];
+        foreach ($data["list_only"] as $key => $value) {
+            $list_state[$value["state"]][$key] = $value;
+        }
+        $data["list_order_by_state"] = array_merge(array_reverse($list_state["in_progress"]), array_reverse($list_state["on_pause"]), array_reverse($list_state["completed"]));
         break;
 
     case "login":

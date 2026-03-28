@@ -75,7 +75,7 @@ view("components/header", ["auth" => $model->auth()]);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; foreach ($list_only as $key => $value): ?>
+                    <?php $i = 1; foreach ($list_order_by_state as $key => $value): ?>
                     <tr <?= $i % 2 == 0 ? "style='background:rgb(0,0,0,.1);'" : ""  ?>>
                         <td><?= $value["goal"] ?></td>
                         <td><?= language($value["state"]) ?></td>

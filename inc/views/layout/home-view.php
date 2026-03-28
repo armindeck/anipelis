@@ -36,6 +36,6 @@ view("components/header", ["auth" => $model->auth()]);
         </div>
         <?php view("components/form-add", ["list_only" => $list_only, "user" => $user ?? false]); ?>
         <hr>
-        <?php view("components/list", ["list_only" => $list_only, "user" => $user ?? false]); ?>
+        <?php view("components/list", ["list_order_by_state" => $list_order_by_state, "user" => $user ?? false]); ?>
     </main>
 <?php view("components/footer"); ?>
