@@ -123,6 +123,48 @@ class Actions {
         }
     }
 
+    public function addGoals($list): void {
+        if (isset($_POST["add"]) || !empty($_POST["add"])){
+            $goal = secureString($_POST["goal"] ?? "");
+            $state = secureString($_POST["state"] ?? "");
+            $time = secureString($_POST["time"] ?? "");
+            $date = secureString($_POST["date"] ?? "");
+
+            $dates = ["goal" => $goal, "state" => $state, "time" => $time, "date" => $date];
+
+            if (empty($goal) || empty($state) || empty($time) || empty($date)){
+                message("error", language("fill_required"));
+                $_SESSION["tmp_form"] = $dates;
+                redirect(route("goals"));
+            }
+
+            $id = secureStringFile($_POST["goal"] ?? "");
+            $search = isset($list[$_SESSION["user"]][$id]);
+            
+            $list[$_SESSION["user"]][$id] = $dates;
+
+            $confirm = write(pathFiles("goals"), $list);
+
+            message($confirm ? "success" : "error", $confirm ? language($search ? "updated" : "added") : language("fail"));
+            redirect(route("goals"));
+        }
+    }
+
+    public function deleteGoals($list): void {
+        if (isset($_GET["action"]) && $_GET["action"] == "delete" && !empty($list) && isset($_GET["id"])){
+            $id = secureString($_GET["id"] ?? "");
+
+            $search = isset($list[$_SESSION["user"]][$id]);
+            if($search){
+                unset($list[$_SESSION["user"]][$id]);
+
+                $confirm = write(pathFiles("goals"), $list);
+                message($confirm ? "success" : "error", language($confirm ? "deleted" : "fail"));
+                redirect(route("goals"));
+            }
+        }
+    }
+
     public function login($captcha, $model): void {
         if (isset($_POST["login"]) || !empty($_POST["login"])){
             $user = secureString($_POST["user"] ?? "");
