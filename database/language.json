@@ -1,4 +1,13 @@
 {
+    "in_progress": {"es": "En proceso", "en": "In progress"},
+    "on_pause": {"es": "En pausa", "en": "On pause"},
+    "completed": {"es": "Completada", "en": "Completed"},
+    "long": {"es": "Largo", "en": "Long"},
+    "medium": {"es": "Mediano", "en": "Medium"},
+    "short": {"es": "Corto", "en": "Short"},
+    "time": {"es": "Tiempo", "en": "Time"},
+    "goal": {"es": "Meta", "en": "Goal"},
+    "goals": {"es": "Objetivos", "en": "Goals"},
     "public": {"es": "Publico", "en": "Public"},
     "private": {"es": "Privado", "en": "Private"},
     "date": {"es": "Fecha", "en": "Date"},
