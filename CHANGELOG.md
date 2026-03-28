@@ -1,6 +1,6 @@
 # Historial de cambios
 
-## [2026-02-26 - 2026-03-27] - v1.0.0 & v1.1.0
+## [2026-02-26 - 2026-03-28] - v1.0.0 & v1.1.0
 
 - Primera versión de la pagina
 - Se puede publicar, modificar y eliminar del listado
@@ -25,3 +25,4 @@
 - Ahora se les puede agregar la cantidad de estrellas (puntaje) a cada elemento
 - Nuevo apartado para guardar las fechas de nacimiento de los familiares (No se comparten con nadie, es privado del usuario).
 - Cambio de nombre/repositio de AniPelis por Switch
+- Nuevo apartado de Objetivos (metas) privado
